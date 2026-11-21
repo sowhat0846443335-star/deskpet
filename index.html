@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="คู่มือการใช้งาน Desk Pet">
-<title>คู่มือ Desk Pet</title>
+<meta name="description" content="Desk Pet manual / คู่มือการใช้งาน Desk Pet">
+<title>Desk Pet Manual · คู่มือ Desk Pet</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
 /* Layout: one reading column; small "screen chips" show what the robot's display looks like */
@@ -99,12 +99,21 @@ details { background: var(--surface); border: 1px solid var(--line); border-radi
 summary { cursor: pointer; font-weight: 600; }
 details p { margin-top: 8px; }
 @media (prefers-reduced-motion: no-preference) { details[open] p { animation: fade .2s ease-out; } @keyframes fade { from { opacity: .4 } to { opacity: 1 } } }
+/* language switch: both languages live in the page, one main element each */
+:root:not([data-lang="en"]) main[data-lang="en"], :root[data-lang="en"] main[data-lang="th"] { display: none; }
+.langswitch { position: fixed; top: max(12px, env(safe-area-inset-top, 0px)); right: max(16px, env(safe-area-inset-right, 0px)); z-index: 10;
+  display: flex; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 3px; box-shadow: 0 2px 10px rgba(0,0,0,.12); }
+.langswitch button { font: 600 0.85rem var(--display); border: 0; background: none; color: var(--muted); padding: 5px 12px; border-radius: 999px; cursor: pointer; }
+.langswitch button[aria-pressed="true"] { background: var(--claude); color: #fff; }
+.langswitch button:focus-visible { outline: 2px solid var(--claude); outline-offset: 2px; }
 </style>
 
 </head>
 <body>
-<main>
-  <header style="display:grid;gap:12px">
+<nav class="langswitch" aria-label="Language / ภาษา"><button type="button" data-set-lang="th" aria-pressed="true">TH</button><button type="button" data-set-lang="en" aria-pressed="false">EN</button></nav>
+
+<main lang="th" data-lang="th">
+  <header style="display:grid;gap:12px;padding-top:28px">
     <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
       <div class="screen pet" aria-hidden="true"><i></i><i></i></div>
       <div class="screen claude" aria-hidden="true"><i></i><i></i></div>
@@ -438,18 +447,375 @@ details p { margin-top: 8px; }
   </section>
 </main>
 
+<main lang="en" data-lang="en">
+  <header style="display:grid;gap:12px;padding-top:28px">
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+      <div class="screen pet" aria-hidden="true"><i></i><i></i></div>
+      <div class="screen claude" aria-hidden="true"><i></i><i></i></div>
+      <div class="screen sys" aria-hidden="true"><i style="width:45%;background:#28d26e"></i><i style="width:80%;background:#ffa000"></i><i style="width:30%;background:#28d26e"></i></div>
+    </div>
+    <h1>Desk Pet Manual</h1>
+    <p class="lede">A little desk pet with feelings of its own. It reacts when you touch it, shows what Claude Code is doing on your computer, displays your computer's CPU, RAM and GPU, and has games you play by tapping its head. Works with Mac, Windows and Linux over a single USB cable.</p>
+  </header>
+
+  <section>
+    <h2>What you need</h2>
+    <div class="tablewrap"><table>
+      <tr><th>Item</th><th>Details</th></tr>
+      <tr><td>Desk Pet</td><td>The robot (1.47" screen, touch sensor on the head, small speaker, LED)</td></tr>
+      <tr><td>USB-C cable</td><td>Must be a <strong>data cable</strong>. Charge-only cables will not work</td></tr>
+      <tr><td>Computer</td><td>Mac (macOS 11 or later), Windows 10/11 or Linux</td></tr>
+      <tr><td>Claude Code</td><td>Optional. Without it the robot is still a pet and still shows your computer's stats</td></tr>
+      <tr><td>Desk Pet app</td><td>One file, download the one for your system (see step 2)</td></tr>
+    </table></div>
+  </section>
+
+  <section>
+    <h2>Getting started</h2>
+    <ol class="steps">
+      <li><div><h3>Plug the robot into your computer</h3><p>It plays a hello tune when it starts, then shows its blue eyes.</p></div></li>
+      <li><div><h3>Download and double-click (once)</h3>
+        <div class="tablewrap"><table>
+          <tr><th>Computer</th><th>Download</th></tr>
+          <tr><td>Any Mac</td><td><a class="dl" href="https://github.com/sowhat0846443335-star/deskpet/releases/latest/download/DeskPet-Mac.zip" target="_blank" rel="noopener">DeskPet-Mac.zip <small>4.6 MB</small></a></td></tr>
+          <tr><td>Windows 10 / 11</td><td><a class="dl" href="https://github.com/sowhat0846443335-star/deskpet/releases/latest/download/DeskPet-Setup-Windows.exe" target="_blank" rel="noopener">DeskPet-Setup-Windows.exe <small>5.2 MB</small></a></td></tr>
+          <tr><td>Linux (regular PC)</td><td><a class="dl" href="https://github.com/sowhat0846443335-star/deskpet/releases/latest/download/DeskPet-Linux-x64" target="_blank" rel="noopener">DeskPet-Linux-x64 <small>5.0 MB</small></a></td></tr>
+          <tr><td>Linux (ARM, e.g. Raspberry Pi)</td><td><a class="dl" href="https://github.com/sowhat0846443335-star/deskpet/releases/latest/download/DeskPet-Linux-arm64" target="_blank" rel="noopener">DeskPet-Linux-arm64 <small>4.9 MB</small></a></td></tr>
+        </table></div>
+        <p>Open the file. A Desk Pet window asks <strong>Install Desk Pet?</strong> Click <strong>Install</strong> and wait a few seconds until it says it is installed and found the robot. That's it, no commands to type.</p>
+        <div class="osblock"><h3>Mac</h3>
+          <p>Double-click <code>DeskPet-Mac.zip</code> to get <strong>Desk Pet Setup</strong>, then double-click that.</p>
+          <p class="hint">The first time, macOS may say it cannot open it. Go to System Settings → Privacy &amp; Security, scroll down, click "Open Anyway", then open it again. You only do this once.</p>
+        </div>
+        <div class="osblock"><h3>Windows</h3>
+          <p>Double-click <code>DeskPet-Setup-Windows.exe</code></p>
+          <p class="hint">If a blue "Windows protected your PC" screen appears, click "More info", then "Run anyway".</p>
+        </div>
+        <div class="osblock"><h3>Linux</h3>
+          <p>Right-click the file → Properties → turn on "Allow executing file as program", then double-click it. Or run it in a terminal:</p>
+          <div class="cmdblock"><code id="cmd-linux-en">chmod +x DeskPet-Linux-x64 &amp;&amp; ./DeskPet-Linux-x64</code><button type="button" data-copy="cmd-linux-en">Copy</button></div>
+          <p class="hint">If your account may not use USB ports yet, the installer asks for your password to allow it. Then log out and back in once.</p>
+        </div>
+        <p>The installer starts a small background program every time the computer starts and sets up Claude Code to send its status to the robot. Your existing settings stay as they are (a backup is saved as <code>settings.json.before-deskpet</code>).</p></div></li>
+      <li><div><h3>Ready</h3><p>Tap the robot's head twice to see your computer's CPU / RAM / GPU. If you use Claude Code, open a <strong>new session</strong> and work as usual: the robot's face turns orange when Claude starts working.</p></div></li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>The robot has 3 modes</h2>
+    <div class="modes">
+      <div class="mode pet">
+        <div class="screen pet" aria-hidden="true"><i></i><i></i></div>
+        <h3>Pet mode</h3>
+        <p>Blue eyes on a black screen. It looks around, blinks, sings when it is happy, gets lonely when nobody plays with it and sleepy when it is tired.</p>
+      </div>
+      <div class="mode claude">
+        <div class="screen claude" aria-hidden="true"><i></i><i></i></div>
+        <h3>Claude mode</h3>
+        <p>Orange face, black eyes. Switches on by itself when Claude Code works and back when Claude is done. The bottom of the screen says what is happening, e.g. <code>Bash</code> or <code>Thinking</code>.</p>
+      </div>
+      <div class="mode">
+        <div class="screen sys" aria-hidden="true"><i style="width:45%;background:#28d26e"></i><i style="width:80%;background:#ffa000"></i><i style="width:30%;background:#28d26e"></i></div>
+        <h3>Monitor mode</h3>
+        <p>Shows the clock and your computer's CPU, RAM, GPU, disk and network speed. Tap the head twice to turn it on or off.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>What the robot shows in Claude mode</h2>
+    <div class="tablewrap"><table>
+      <tr><th>Status</th><th>What you see</th><th>Sound / light</th></tr>
+      <tr><td>Thinking</td><td>A ? inside the eyes, moving with them</td><td>Slow blue blink</td></tr>
+      <tr><td>Working</td><td>Code scrolling inside the eyes, eyes glance left and right</td><td>Green light</td></tr>
+      <tr><td>A question for you</td><td>Big eyes, "Question for you"</td><td>A "hm?" sound, yellow blink</td></tr>
+      <tr><td>Needs permission</td><td>Big eyes, "Permission needed!"</td><td>3 beeps, orange blink</td></tr>
+      <tr><td>Waiting over 2 minutes</td><td>Shaking eyes, sweat</td><td>Calls again, fast blink</td></tr>
+      <tr><td>Done</td><td>Smiling eyes, "Done!"</td><td>Short sound, green flash</td></tr>
+      <tr><td>Usage over 90%</td><td>Flames in the eyes</td><td>Orange-red light</td></tr>
+      <tr><td>Usage at 100%</td><td>Droopy eyes, sweat drops</td><td>—</td></tr>
+      <tr><td>Waiting for you to type</td><td>Face gently breathing</td><td>One soft sound</td></tr>
+    </table></div>
+    <div class="note info"><strong>Stop the calling</strong><p>When the robot calls you, tap its head once to say "got it". It stops calling.</p></div>
+  </section>
+
+  <section>
+    <h2>Monitor mode</h2>
+    <p>Tap the head twice and the robot shows your computer's stats, updated every 2 seconds. Tap twice again to go back to the pet. Every time you plug it in, it starts as the pet.</p>
+    <div class="mon" role="img" aria-label="Example monitor screen: CPU 27, RAM 80, GPU 38, disk 64 percent">
+      <div class="clk">13:52</div>
+      <div class="r"><span>CPU</span><div class="bar"><span style="width:27%;background:#28d26e"></span></div><span>27%</span></div>
+      <div class="r"><span>RAM</span><div class="bar"><span style="width:80%;background:#ffa000"></span></div><span>80%</span></div>
+      <div class="r"><span>GPU</span><div class="bar"><span style="width:38%;background:#28d26e"></span></div><span>38%</span></div>
+      <div class="r"><span>DSK</span><div class="bar"><span style="width:64%;background:#ffa000"></span></div><span>64%</span></div>
+      <div class="small">NET  up 12 KB/s   down 1.4 MB/s</div>
+    </div>
+    <div class="tablewrap"><table>
+      <tr><th>On screen</th><th>Meaning</th></tr>
+      <tr><td>Clock</td><td>Your computer's time. Below it: battery (laptops, + = charging) and CPU temperature when the computer allows reading it</td></tr>
+      <tr><td>Graph, top right</td><td>CPU over about the last 2 minutes</td></tr>
+      <tr><td>CPU / RAM / GPU / DSK</td><td>Percent in use · <span class="dot" style="background:#28d26e"></span>green below 60% · <span class="dot" style="background:#ffa000"></span>orange 60–84% · <span class="dot" style="background:#ff3c32"></span>red 85% and up</td></tr>
+      <tr><td>NET</td><td>Current upload (up) and download (down) speed</td></tr>
+      <tr><td>LED</td><td>Green = CPU idle · yellow = medium · blinking red = busy</td></tr>
+    </table></div>
+    <h3>What each system can show</h3>
+    <div class="tablewrap"><table>
+      <tr><th>Value</th><th>Mac</th><th>Windows</th><th>Linux</th></tr>
+      <tr><td>CPU, RAM, disk, network, clock</td><td>✓</td><td>✓</td><td>✓</td></tr>
+      <tr><td>GPU</td><td>✓ all models</td><td>NVIDIA cards</td><td>NVIDIA, AMD</td></tr>
+      <tr><td>Battery (laptops)</td><td>✓</td><td>✓</td><td>✓</td></tr>
+      <tr><td>CPU temperature</td><td>—</td><td>usually not</td><td>usually yes</td></tr>
+    </table></div>
+    <p class="hint">When a value cannot be read, GPU shows "n/a" and battery / temperature are hidden. When Claude Code works, the robot switches to the orange face first and returns to the monitor afterwards. In this mode the robot does not make lonely sounds or fall asleep.</p>
+  </section>
+
+  <section>
+    <h2>Main menu</h2>
+    <p>Tap the head 4 times to open the main menu with 3 choices: <strong>GAMES</strong>, <strong>FOCUS</strong> (work timer) and <strong>SETTINGS</strong>.</p>
+    <div class="tablewrap"><table>
+      <tr><th>In every menu</th><th>How</th></tr>
+      <tr><td>Next item</td><td>Tap once</td></tr>
+      <tr><td>Choose / open</td><td>Touch and hold until the green bar is full (about half a second)</td></tr>
+      <tr><td>Leave</td><td>Don't touch for 12 seconds</td></tr>
+    </table></div>
+  </section>
+
+  <section>
+    <h2>FOCUS — work timer</h2>
+    <p>A Pomodoro timer: 25 minutes of work, then a 5 minute break. After 4 rounds you get a 15 minute break. The screen shows a countdown ring and how many rounds you finished.</p>
+    <div class="tablewrap"><table>
+      <tr><th>To do</th><th>How</th></tr>
+      <tr><td>Start</td><td>Tap once</td></tr>
+      <tr><td>Pause / resume</td><td>Tap once</td></tr>
+      <tr><td>Stop the timer</td><td>Touch and hold until the bar is full</td></tr>
+      <tr><td>Work time is up</td><td>The robot calls you, the light turns green and the break starts by itself</td></tr>
+      <tr><td>Break is over</td><td>The robot calls again. Tap to start the next round</td></tr>
+    </table></div>
+    <p class="hint">The LED is soft red while you work and green during breaks. If Claude Code asks a question meanwhile, the screen shows the question first, but the timer keeps running.</p>
+  </section>
+
+  <section>
+    <h2>SETTINGS</h2>
+    <p>Tap to move to the next line, touch and hold to change that line. The robot remembers everything, even when unplugged.</p>
+    <div class="tablewrap"><table>
+      <tr><th>Line</th><th>Holding it…</th></tr>
+      <tr><td>Volume</td><td>Turns the sound up one step (0–5). After 5 it goes back to off</td></tr>
+      <tr><td>Eye colour</td><td>Changes the pet's eye colour</td></tr>
+      <tr><td>Break reminder</td><td>Remind you every 30 / 45 / 50 / 60 minutes, or off (default 50 minutes)</td></tr>
+      <tr><td>Welcome back</td><td>Turns the greeting when you come back to your desk on or off</td></tr>
+      <tr><td>Reset game scores</td><td>Clears the best scores of all games</td></tr>
+      <tr><td>Back</td><td>Back to the main menu</td></tr>
+    </table></div>
+  </section>
+
+  <section>
+    <h2>Break reminder and welcome back</h2>
+    <p>The robot knows whether you are using your computer from keyboard and mouse activity. (The Desk Pet app only tells the robot how many seconds since the last input. It never looks at what you type.)</p>
+    <div class="tablewrap"><table>
+      <tr><th>When</th><th>The robot</th></tr>
+      <tr><td>You have used the computer for the set time</td><td>Shows <strong>Time for a break!</strong> with a reminder sound. Tap once = OK; it asks again in 10 minutes if you have not taken a break</td></tr>
+      <tr><td>You leave for more than 8 minutes</td><td>Starts counting again, looks sleepy and dozes off</td></tr>
+      <tr><td>You touch the mouse or keyboard again</td><td>Wakes up, laughs and shows <strong>Welcome back!</strong></td></tr>
+    </table></div>
+    <p class="hint">Works on Mac and Windows. Linux needs the <code>xprintidle</code> program and works on X11 only (not Wayland). The robot does not remind you during games or a FOCUS timer.</p>
+  </section>
+
+  <section>
+    <h2>Games</h2>
+    <p>In the main menu choose GAMES to open the game menu with 5 games: HOP!, FLY!, STACK, QUICK! and FISH. Each shows its best score, and the dots at the bottom show which game you are on.</p>
+    <div class="tablewrap"><table>
+      <tr><th>In the game menu</th><th>How</th></tr>
+      <tr><td>Next game</td><td>Tap once</td></tr>
+      <tr><td>Play</td><td>Touch and hold until the green bar at the bottom is full (about half a second)</td></tr>
+      <tr><td>Leave the menu</td><td>Don't touch for 12 seconds</td></tr>
+    </table></div>
+    <h3>HOP! — jump over the bugs</h3>
+    <p>A tiny robot keeps running and you jump over the bugs. The longer you play, the faster it gets.</p>
+    <div class="tablewrap"><table>
+      <tr><th>To do</th><th>How</th></tr>
+      <tr><td>Start / jump</td><td>Tap the head once · hold for a higher jump</td></tr>
+      <tr><td>Double jump</td><td>Tap again while in the air</td></tr>
+      <tr><td><span class="dot" style="background:#ff4632"></span>Red bug on the ground</td><td>Jump over it</td></tr>
+      <tr><td><span class="dot" style="background:#c850ff"></span>Purple flying bug</td><td>Don't jump, run underneath (appears from 8 points)</td></tr>
+      <tr><td><span class="dot" style="background:#ffdc3c"></span>Yellow star</td><td>Jump to grab it, +3 points</td></tr>
+      <tr><td>Play again</td><td>Tap after "Tap to play again" appears</td></tr>
+      <tr><td>Leave</td><td>Don't touch for 12 seconds on the start or game-over screen</td></tr>
+    </table></div>
+    <h3>FLY! — fly through the gaps</h3>
+    <p>The robot has a propeller and flies through the gaps between purple crystal towers. Each tower passed = 1 point. The more points, the narrower the gaps and the faster the towers.</p>
+    <div class="tablewrap"><table>
+      <tr><th>To do</th><th>How</th></tr>
+      <tr><td>Start</td><td>Tap the head once</td></tr>
+      <tr><td>Fly up</td><td>Touch and hold; the longer you hold, the higher it goes</td></tr>
+      <tr><td>Go down</td><td>Let go and the robot sinks slowly</td></tr>
+      <tr><td>Lose</td><td>Hitting a tower or the ground</td></tr>
+      <tr><td>Play again / leave</td><td>Same as HOP!</td></tr>
+    </table></div>
+    <h3>STACK — build a tower</h3>
+    <p>A block slides back and forth above the tower. Tap to drop it on the floor below. Whatever hangs over the edge is cut off, so the tower slowly gets narrower. Land it exactly for a <strong>PERFECT</strong>: nothing is cut. The higher you build, the faster the block moves. Missing the tower completely ends the game. Score = height of the tower.</p>
+    <h3>QUICK! — reaction test</h3>
+    <p>Tap to start. The screen turns red with "Wait...". Wait until the screen (and the LED) turns <strong>green</strong>, then tap as fast as you can. The robot shows your time in milliseconds (ms); lower is faster. Tapping while it is still red gives "Too soon!". Your best is your fastest time. Great for challenging your desk neighbours.</p>
+    <h3>FISH — go fishing</h3>
+    <p>A white needle swings along the bar at the top. Tap while it is in the <strong>green zone</strong>. The closer to the gold centre, the bigger the fish. Hit the gold spot exactly for a <strong>Golden Koi</strong>. A round has 5 casts, and the green zone gets smaller and the needle faster each time. Score = total length of all your fish (cm).</p>
+    <div class="tablewrap"><table>
+      <tr><th>Fish</th><th>You get it when</th></tr>
+      <tr><td>Minnow, Perch, Bass</td><td>You hit the green zone; closer to the centre = bigger</td></tr>
+      <tr><td>Big Catfish</td><td>Very close to the gold spot</td></tr>
+      <tr><td><span class="dot" style="background:#ffbe28"></span>Golden Koi</td><td>Exactly on the gold spot, 60–80 cm</td></tr>
+      <tr><td>It got away...</td><td>You tapped outside the green zone</td></tr>
+    </table></div>
+    <p class="hint">Every game starts with one tap, restarts with a tap after game over, and closes by itself after 12 seconds without a touch.</p>
+    <p class="hint">The robot remembers each game's best score, even when unplugged. Playing together makes it happier. If Claude Code asks a question or needs permission while you play, the game closes so you can see the message.</p>
+  </section>
+
+  <section>
+    <h2>Touching the head</h2>
+    <p>The touch sensor is under the top of the head. No need to press hard, a light touch is enough.</p>
+    <div class="tablewrap"><table>
+      <tr><th>Touch</th><th>When awake</th><th>When asleep</th></tr>
+      <tr><td>1 tap</td><td>Startles and looks around (while it is calling = "got it")</td><td>Screen lights dimly for 5 seconds, then back to sleep</td></tr>
+      <tr><td>2 quick taps</td><td>Monitor mode on / off</td><td>Wakes up</td></tr>
+      <tr><td>3 taps</td><td>Laughs (in Claude mode: usage screen for 10 seconds)</td><td>Wakes up</td></tr>
+      <tr><td>4 taps</td><td>Main menu (games, timer, settings)</td><td>Wakes up</td></tr>
+      <tr><td>5 quick taps</td><td>Gets annoyed</td><td>Wakes up</td></tr>
+      <tr><td>6 taps</td><td>Volume screen</td><td>Wakes up</td></tr>
+      <tr><td>7 or more quick taps</td><td>Gets dizzy</td><td>Wakes up</td></tr>
+      <tr><td>Touch and hold</td><td>Petting: the robot is happy, hearts float up</td><td>Hold 1.5 seconds to wake it</td></tr>
+    </table></div>
+    <p class="hint">On the monitor screen the robot only reacts to 2 taps (to go back to the pet).</p>
+  </section>
+
+  <section>
+    <h2>Volume</h2>
+    <p>Tap the head 6 times to open the <strong>Volume</strong> screen with 5 bars. Each tap turns it up one step and the robot plays a sound so you hear the level. After step 5 it goes back to off (Sound off). The screen closes after 5 seconds without a touch. The robot remembers the level, even when unplugged. You can also change it in SETTINGS.</p>
+  </section>
+
+  <section>
+    <h2>Claude usage screen</h2>
+    <p>Shows how much of your Claude plan you have used, for the 5-hour window (Session) and the week (Weekly).</p>
+    <div class="bars" role="img" aria-label="Example usage screen: Session 28 percent, Weekly 66 percent">
+      <div class="row"><span>Session</span><span>28%</span></div>
+      <div class="bar"><span style="width:28%;background:#00e65a"></span><b style="left:40%"></b></div>
+      <div class="small">resets 8:40 PM - in 3h 12m</div>
+      <div class="row" style="margin-top:8px"><span>Weekly</span><span>66%</span></div>
+      <div class="bar"><span style="width:66%;background:#00e65a"></span><b style="left:57%"></b></div>
+      <div class="small">resets Sat 5:00 PM - in 2d 1h</div>
+    </div>
+    <div class="tablewrap"><table>
+      <tr><th>On screen</th><th>Meaning</th></tr>
+      <tr><td>Bar colour</td><td><span class="dot" style="background:#00c84f"></span>green below 70% · <span class="dot" style="background:#ff9600"></span>orange 70–89% · <span class="dot" style="background:#ff2828"></span>red 90% and up</td></tr>
+      <tr><td>White line on the bar</td><td>How much of the time window has passed. If the coloured bar goes past it, you are using faster than time passes</td></tr>
+      <tr><td>resets … in …</td><td>When the usage resets, and how long until then</td></tr>
+      <tr><td>Stale - updated … ago</td><td>The numbers have not updated for over 15 minutes; these are the last ones the robot knows</td></tr>
+    </table></div>
+    <div class="note"><strong>Where the numbers come from</strong><p>Usage numbers come from Claude Code running in a terminal (the <code>claude</code> command) and update every time Claude answers. If you only use the desktop app, the numbers do not update, but everything else about Claude still shows.</p></div>
+  </section>
+
+  <section>
+    <h2>LED light</h2>
+    <div class="tablewrap"><table>
+      <tr><th>Colour</th><th>Meaning</th></tr>
+      <tr><td><span class="dot" style="background:#19c3e6"></span>Cyan</td><td>Normal</td></tr>
+      <tr><td><span class="dot" style="background:#ffc400"></span>Yellow</td><td>Happy</td></tr>
+      <tr><td><span class="dot" style="background:#ff6fa5"></span>Pulsing pink</td><td>Being petted</td></tr>
+      <tr><td><span class="dot" style="background:#ff2828"></span>Blinking red</td><td>Annoyed</td></tr>
+      <tr><td><span class="dot" style="background:#2c6dff"></span>Dim blue</td><td>Lonely or sad</td></tr>
+      <tr><td><span class="dot" style="background:#7a3cff"></span>Breathing purple</td><td>Asleep (turns off after 2 minutes of sleep)</td></tr>
+      <tr><td><span class="dot" style="background:#00c84f"></span>Green</td><td>Claude is working</td></tr>
+    </table></div>
+  </section>
+
+  <section>
+    <h2>Sleep</h2>
+    <p>(Pet mode only) After 10 minutes with no touch and no Claude work, the robot sings a quiet lullaby and falls asleep. 2 minutes later the screen and light turn off completely. It wakes up when you tap its head twice, touch and hold, or when Claude starts working.</p>
+  </section>
+
+  <section>
+    <h2>deskpet commands</h2>
+    <p>Not needed for normal use. For people who like the terminal, or for troubleshooting. Available after installing (open a new terminal).</p>
+    <div class="tablewrap"><table>
+      <tr><th>Command</th><th>What it does</th></tr>
+      <tr><td><code>deskpet status</code></td><td>Is the robot connected? Is everything set up?</td></tr>
+      <tr><td><code>deskpet test</code></td><td>The robot shows its thinking face for 3 seconds, to test the connection</td></tr>
+      <tr><td><code>deskpet usage</code></td><td>Show the usage screen on the robot</td></tr>
+      <tr><td><code>deskpet demo</code></td><td>Show every Claude-mode look</td></tr>
+      <tr><td><code>deskpet monitor on</code></td><td>Monitor mode on (<code>off</code> = off)</td></tr>
+      <tr><td><code>deskpet sysinfo</code></td><td>What this computer can report (-1 = cannot be read)</td></tr>
+      <tr><td><code>deskpet log</code></td><td>What the robot received recently, for troubleshooting</td></tr>
+      <tr><td><code>deskpet restart</code></td><td>Restart the background program</td></tr>
+      <tr><td><code>deskpet version</code></td><td>Show the app version</td></tr>
+      <tr><td><code>deskpet update-robot</code></td><td>Put the robot software that comes with the app onto the robot</td></tr>
+      <tr><td><code>deskpet uninstall</code></td><td>Remove Desk Pet from this computer</td></tr>
+    </table></div>
+    <div class="note info"><strong>Updating or removing</strong><p>Download the file again from this manual and double-click it. You can choose Update or Uninstall (on Windows: Yes = Update, No = Uninstall). <strong>One Update updates both the app on your computer and the software inside the robot.</strong> Keep the robot plugged in. While the robot updates (about 15–30 seconds) its screen freezes or goes dark: do not unplug it. When done it restarts by itself and the window says Robot updated.</p></div>
+  </section>
+
+  <section>
+    <h2>Troubleshooting</h2>
+    <div class="faq">
+      <details><summary>I unplugged the robot during an update and its screen is dark</summary><p>Don't worry, it is not broken. Plug it back in, double-click the installer and click Update again. The app finds the robot and puts the software back on it.</p></details>
+      <details><summary>The monitor screen says "Waiting for computer..."</summary><p>The robot is not getting data from the computer. Check that the app is installed and that you use a USB-C data cable. If it continues, double-click the installer and click Update, or restart the computer once.</p></details>
+      <details><summary>GPU shows n/a</summary><p>This computer does not allow reading the GPU, e.g. Windows with an AMD or Intel graphics card. Everything else still shows.</p></details>
+      <details><summary>The face does not turn orange when I use Claude</summary><p>After the first install, open a new Claude Code session once. If it still doesn't work, run <code>deskpet status</code>. If it says Robot: not found, use a USB-C data cable or another USB port. If it says Bridge: NOT running, run <code>deskpet restart</code>.</p></details>
+      <details><summary>Mac says the file cannot be opened / "cannot verify the developer"</summary><p>Go to System Settings → Privacy &amp; Security, scroll down, click "Open Anyway", then double-click Desk Pet Setup again.</p></details>
+      <details><summary>Windows: deskpet status prints late or after the prompt</summary><p>That is normal: the program runs without a window on Windows, so its text appears just after the prompt. Press Enter to get the prompt back.</p></details>
+      <details><summary>Linux: Robot not found although it is plugged in</summary><p>If you skipped the USB permission during install, or have not logged out and in since, log out and back in first. If that does not help, run <code>sudo usermod -aG dialout $USER</code> (Arch uses the <code>uucp</code> group), then log out and back in.</p></details>
+      <details><summary>Claude Code in WSL on Windows</summary><p>Not supported yet, because WSL cannot see Windows' USB ports. Use Claude Code on Windows directly.</p></details>
+      <details><summary>The usage screen says "No usage data yet"</summary><p>Open a terminal, type <code>claude</code> and ask anything once. The numbers reach the robot after Claude answers. Requires a Claude Pro, Max or Ultra plan.</p></details>
+      <details><summary>The numbers say Stale</summary><p>They are more than 15 minutes old because <code>claude</code> was not used in a terminal during that time. They update as soon as you use it again.</p></details>
+      <details><summary>The robot keeps calling</summary><p>Tap its head once to say "got it", or answer Claude on your computer.</p></details>
+      <details><summary>Too loud or too quiet</summary><p>Tap the head 6 times to open the volume screen, then tap once per step until it sounds right (see "Volume").</p></details>
+      <details><summary>Touch does not respond</summary><p>Don't touch the head during the first half second after plugging in, while the sensor calibrates. If it still does not respond, unplug and plug in again.</p></details>
+    </div>
+  </section>
+
+  <section>
+    <h2>Limitations</h2>
+    <div class="tablewrap"><table>
+      <tr><th>Topic</th><th>Details</th></tr>
+      <tr><td>Systems</td><td>macOS, Windows 10/11 and Linux (Claude Code running in WSL is not supported)</td></tr>
+      <tr><td>Connection</td><td>USB cable to the computer you want to watch. If the computer sleeps or the cable is unplugged, the robot stops getting updates</td></tr>
+      <tr><td>Usage numbers</td><td>Update only when you use <code>claude</code> in a terminal</td></tr>
+      <tr><td>Claude on other machines</td><td>Cloud or server (SSH) sessions cannot show on the robot</td></tr>
+    </table></div>
+    <p style="color:var(--muted);font-size:.85rem">Desk Pet is not an Anthropic product · Claude and Claude Code are trademarks of Anthropic</p>
+  </section>
+</main>
+
+
 <script>
-document.querySelectorAll('button[data-copy]').forEach(function (btn) {
-  btn.addEventListener('click', function () {
-    var el = document.getElementById(btn.getAttribute('data-copy'));
-    var text = el.textContent;
-    var done = function () { btn.textContent = 'คัดลอกแล้ว'; setTimeout(function () { btn.textContent = 'คัดลอก'; }, 1500); };
-    try {
-      navigator.clipboard.writeText(text).then(done, function () { selectText(el); });
-    } catch (e) { selectText(el); }
+(function () {
+  var root = document.documentElement;
+  var COPY = { th: ['คัดลอก', 'คัดลอกแล้ว'], en: ['Copy', 'Copied'] };
+  var TITLE = { th: 'คู่มือ Desk Pet', en: 'Desk Pet Manual' };
+  function setLang(l, save) {
+    if (l !== 'en') l = 'th';
+    root.setAttribute('data-lang', l);
+    root.setAttribute('lang', l);
+    document.title = TITLE[l];
+    document.querySelectorAll('[data-set-lang]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-set-lang') === l)); });
+    if (save) { try { localStorage.setItem('deskpet-lang', l); } catch (e) {} }
+  }
+  var start = null;
+  try { start = new URLSearchParams(location.search).get('lang'); } catch (e) {}
+  if (!start) { try { start = localStorage.getItem('deskpet-lang'); } catch (e) {} }
+  if (!start) start = (navigator.language || '').toLowerCase().indexOf('th') === 0 ? 'th' : 'en';
+  setLang(start, false);
+  document.querySelectorAll('[data-set-lang]').forEach(function (b) {
+    b.addEventListener('click', function () { setLang(b.getAttribute('data-set-lang'), true); });
   });
-});
-function selectText(el) { var r = document.createRange(); r.selectNodeContents(el); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); }
+
+  function selectText(el) { var r = document.createRange(); r.selectNodeContents(el); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); }
+  document.querySelectorAll('button[data-copy]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var el = document.getElementById(btn.getAttribute('data-copy'));
+      var l = root.getAttribute('data-lang') === 'en' ? 'en' : 'th';
+      var done = function () { btn.textContent = COPY[l][1]; setTimeout(function () { btn.textContent = COPY[l][0]; }, 1500); };
+      try { navigator.clipboard.writeText(el.textContent).then(done, function () { selectText(el); }); }
+      catch (e) { selectText(el); }
+    });
+  });
+})();
 </script>
 
 </body>
