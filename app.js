@@ -23,8 +23,7 @@ document.querySelectorAll('.mode-tabs button').forEach(btn=>btn.addEventListener
   document.querySelectorAll('.mode-tabs button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
   const m=modes[btn.dataset.mode],lang=document.documentElement.lang;
   document.querySelector('.mode-index').textContent=m.index;document.querySelector('.mode-copy h3').textContent=m.title[lang]||m.title.en;document.querySelector('.mode-copy p').textContent=m.body[lang]||m.body.en;document.querySelector('.mode-screen>span').textContent=m.status;
-  document.querySelector('.mode-screen').style.background=m.className==='claude'?'radial-gradient(circle at 50% 45%,#713721,#060403 63%)':m.className==='monitor'?'radial-gradient(circle at 50% 45%,#173f32,#030706 63%)':'radial-gradient(circle at 50% 45%,#173746,#030507 63%)';
-  document.querySelectorAll('.screen-eyes i').forEach(i=>i.style.background=m.className==='claude'?'#ff9d67':m.className==='monitor'?'#73f4bf':'#73e6f7');
+  document.querySelector('.mode-screen').className='mode-screen '+m.className;   // pet: cyan eyes · claude: orange face · monitor: stats like the robot shows
 }));
 const menu=document.querySelector('.mobile-menu'),menuButton=document.querySelector('.menu-button');menuButton.addEventListener('click',()=>{const open=menu.hasAttribute('hidden');menu.toggleAttribute('hidden');menuButton.setAttribute('aria-expanded',open)});menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.hidden=true;menuButton.setAttribute('aria-expanded','false')}));
 const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.04,rootMargin:'0px 0px -30px 0px'});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
