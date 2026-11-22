@@ -9,8 +9,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="product.css">
+  <link rel="stylesheet" href="styles.css?v=4">
+  <link rel="stylesheet" href="product.css?v=4">
 </head>
 <body>
   <div class="noise" aria-hidden="true"></div>
@@ -127,7 +127,20 @@
 
     <section class="section live-screens" id="screens">
       <div class="section-heading reveal"><div><span class="kicker" data-i18n="screensKicker">REAL SCREEN RECORDINGS</span><h2 data-i18n="screensTitle">See every look.</h2></div><p data-i18n="screensBody">Recorded straight from DeskPet's own display over USB — no mock-ups.</p></div>
-      <div class="gif-grid reveal"><figure><img src="pet-normal.gif" width="320" height="172" loading="lazy" alt="Pet: looking around"><figcaption data-i18n="gif_pet_normal">Pet: looking around</figcaption></figure><figure><img src="pet-laugh.gif" width="320" height="172" loading="lazy" alt="3 taps: laughing"><figcaption data-i18n="gif_pet_laugh">3 taps: laughing</figcaption></figure><figure><img src="pet-annoyed.gif" width="320" height="172" loading="lazy" alt="5 taps: annoyed"><figcaption data-i18n="gif_pet_annoyed">5 taps: annoyed</figcaption></figure><figure><img src="pet-dizzy.gif" width="320" height="172" loading="lazy" alt="7 taps: dizzy"><figcaption data-i18n="gif_pet_dizzy">7 taps: dizzy</figcaption></figure><figure><img src="pet-asleep.gif" width="320" height="172" loading="lazy" alt="Asleep"><figcaption data-i18n="gif_pet_asleep">Asleep</figcaption></figure><figure><img src="claude-thinking.gif" width="320" height="172" loading="lazy" alt="Claude: thinking"><figcaption data-i18n="gif_claude_thinking">Claude: thinking</figcaption></figure><figure><img src="claude-working.gif" width="320" height="172" loading="lazy" alt="Claude: working"><figcaption data-i18n="gif_claude_working">Claude: working</figcaption></figure><figure><img src="claude-question.gif" width="320" height="172" loading="lazy" alt="Claude: a question for you"><figcaption data-i18n="gif_claude_question">Claude: a question for you</figcaption></figure><figure><img src="claude-permission.gif" width="320" height="172" loading="lazy" alt="Claude: needs permission"><figcaption data-i18n="gif_claude_permission">Claude: needs permission</figcaption></figure><figure><img src="claude-done.gif" width="320" height="172" loading="lazy" alt="Claude: done"><figcaption data-i18n="gif_claude_done">Claude: done</figcaption></figure><figure><img src="claude-on-fire.gif" width="320" height="172" loading="lazy" alt="Usage over 90%"><figcaption data-i18n="gif_claude_on_fire">Usage over 90%</figcaption></figure><figure><img src="claude-maxed-out.gif" width="320" height="172" loading="lazy" alt="Usage at 100%"><figcaption data-i18n="gif_claude_maxed_out">Usage at 100%</figcaption></figure><figure><img src="codex-thinking.gif" width="320" height="172" loading="lazy" alt="Codex: thinking"><figcaption data-i18n="gif_codex_thinking">Codex: thinking</figcaption></figure><figure><img src="codex-working.gif" width="320" height="172" loading="lazy" alt="Codex: working"><figcaption data-i18n="gif_codex_working">Codex: working</figcaption></figure><figure><img src="codex-permission.gif" width="320" height="172" loading="lazy" alt="Codex: needs approval"><figcaption data-i18n="gif_codex_permission">Codex: needs approval</figcaption></figure><figure><img src="codex-done.gif" width="320" height="172" loading="lazy" alt="Codex: done"><figcaption data-i18n="gif_codex_done">Codex: done</figcaption></figure><figure><img src="monitor.gif" width="320" height="172" loading="lazy" alt="Monitor mode"><figcaption data-i18n="gif_monitor">Monitor mode</figcaption></figure><figure><img src="menu.gif" width="320" height="172" loading="lazy" alt="Main menu"><figcaption data-i18n="gif_menu">Main menu</figcaption></figure><figure><img src="focus.gif" width="320" height="172" loading="lazy" alt="Focus timer"><figcaption data-i18n="gif_focus">Focus timer</figcaption></figure><figure><img src="break-reminder.gif" width="320" height="172" loading="lazy" alt="Break reminder"><figcaption data-i18n="gif_break_reminder">Break reminder</figcaption></figure><figure><img src="game-hop.gif" width="320" height="172" loading="lazy" alt="HOP!"><figcaption data-i18n="gif_game_hop">HOP!</figcaption></figure><figure><img src="game-fly.gif" width="320" height="172" loading="lazy" alt="FLY!"><figcaption data-i18n="gif_game_fly">FLY!</figcaption></figure><figure><img src="game-stack.gif" width="320" height="172" loading="lazy" alt="STACK"><figcaption data-i18n="gif_game_stack">STACK</figcaption></figure><figure><img src="game-fish.gif" width="320" height="172" loading="lazy" alt="FISH"><figcaption data-i18n="gif_game_fish">FISH</figcaption></figure></div>
+      <div class="screen-viewer reveal">
+        <div class="sv-tabs" role="tablist" aria-label="Screen groups">
+          <button class="active" data-group="pet" data-i18n="svPet">Pet</button>
+          <button data-group="claude">Claude Code</button>
+          <button data-group="codex">Codex</button>
+          <button data-group="apps" data-i18n="svApps">Apps &amp; games</button>
+        </div>
+        <div class="sv-stage">
+          <button class="sv-arrow prev" aria-label="Previous">‹</button>
+          <figure><img class="sv-main" src="pet-normal.gif" width="320" height="172" alt=""><figcaption class="sv-caption"></figcaption></figure>
+          <button class="sv-arrow next" aria-label="Next">›</button>
+        </div>
+        <div class="sv-thumbs" role="listbox" aria-label="Screens"></div>
+      </div>
     </section>
 
     <section class="section controls" id="controls">
@@ -166,6 +179,6 @@
   </main>
 
   <footer><a class="brand" href="#top"><span class="brand-mark"><i></i><i></i></span><span>DESK<span>PET</span></span></a><p data-i18n="footer">A tiny companion for Mac, Windows and Linux.</p><small>DeskPet is not an Anthropic product · Claude and Claude Code are trademarks of Anthropic.</small></footer>
-  <script src="app.js"></script>
+  <script src="app.js?v=4"></script>
 </body>
 </html>
