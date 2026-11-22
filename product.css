@@ -114,3 +114,11 @@
 .sm-row em{font-style:normal;color:#ebebf0;text-align:right}
 .screen-monitor small{font-size:.75rem;color:#8b919c;white-space:pre}
 @media(max-width:600px){.sm-top b{font-size:1.5rem}.sm-row{font-size:.85rem;grid-template-columns:38px 1fr 40px}}
+
+/* real recordings from the robot's screen (320x172 GIFs) */
+.mode-screen .mode-gif{width:min(640px,88%);height:auto;aspect-ratio:320/172;image-rendering:pixelated;border-radius:14px;box-shadow:0 0 0 6px #1a2430,0 30px 60px rgba(0,0,0,.45)}
+.mode-screen.claude,.mode-screen.monitor{background:radial-gradient(circle at 50% 45%,#17222e,#05080c 65%)}
+.gif-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+.gif-grid figure{margin:0;padding:10px;border:1px solid var(--line);border-radius:16px;background:#0d141d}
+.gif-grid img{width:100%;height:auto;aspect-ratio:320/172;display:block;border-radius:8px;image-rendering:pixelated;background:#000}
+.gif-grid figcaption{margin-top:8px;font-size:.85rem;color:var(--muted)}
